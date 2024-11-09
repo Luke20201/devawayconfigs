@@ -1,4 +1,5 @@
 Config = {
+    debug = false,
     framework = "qb", -- qb/esx
     target = "ox", -- ox/qb
     inv = "ps", -- ox/qb/ps/codem/qs
@@ -10,6 +11,7 @@ Config = {
         ["escort"] = "Escort Hostage",
         ["move_backroom"] = "Move to Backroom",
         ["release"] = "Release Hostage",
+        ["hostage"] = "Hold Hostage"
     },
     onesyncDelay = 25000, -- Because of onesync the main program loop cannot run as peds are not spawned on the client. A loop is executed in this timeframe to detect if they exist on the client. Setting it too low will cause serious performance defiects
     buildings = {
@@ -46,7 +48,15 @@ Config = {
                     models = {"mp_m_shopkeep_01"},
                     animDict = "missheistdockssetup1ig_12@idle_b",
                     animName = "talk_gantry_idle_b_worker4",
-                    role = "teller" -- customer(normal), teller(can loot registers/safes)
+                    role = "teller", -- customer(normal), teller(can loot registers/safes),
+                    fightBack = {
+                        chance = 0,
+                        weapons =
+                        {
+                            ["weapon_pistol"] = 80,
+                            ["weapon_unarmed"] = 20,
+                        }
+                    }
                 },
                 [2] = {
                     coords = vector4(-48.7491, -1756.9325, 29.4210, 167.0694),
